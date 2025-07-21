@@ -230,7 +230,7 @@ export default function PrivacyPolicyPage() {
                 </a>
               </p>
               <p className="text-sm text-gray-400">
-                AI@UNCP • University of North Carolina Pembroke
+                AI@UNCP • University of North Carolina at Pembroke
               </p>
             </section>
           </div>
