@@ -229,8 +229,8 @@ export default function PrivacyPolicyPage() {
                   team@hackuncp.com
                 </a>
               </p>
-              <p className="text-sm text-gray-400">
-                AI@UNCP • University of North Carolina at Pembroke
+              <p className="text-gray-300">
+                We&apos;re here to help with any questions about your data or privacy.
               </p>
             </section>
           </div>
