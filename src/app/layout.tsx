@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-// Google Fonts
+// Load Google Fonts
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -13,16 +13,19 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Metadata for SEO and social platforms
+// Full SEO Metadata with Google Verification and Favicons
 export const metadata: Metadata = {
   metadataBase: new URL("https://hackuncp.github.io"),
   title: "HackUNCP 2026 | Premier AI Hackathon",
   description:
-    "HackUNCP 2026 is UNC Pembroke’s premier AI hackathon organized by AI@UNCP. Join student innovators for 24 hours of building, learning, and collaboration.",
+    "HackUNCP 2026 is UNC Pembroke’s flagship AI hackathon organized by AI@UNCP. Join builders, coders, and creatives from across the region.",
+  verification: {
+    google: "Urk5X0IKPxzTGKlDZTJnMg-ZFG-3eHNP1rknY8QnfrU",
+  },
   openGraph: {
     title: "HackUNCP 2026 | Premier AI Hackathon",
     description:
-      "Hosted by AI@UNCP, HackUNCP 2026 is UNC Pembroke's premier AI hackathon bringing together developers to solve real challenges with technology.",
+      "Build with AI. Compete with purpose. HackUNCP 2026 is organized by AI@UNCP and hosted at UNC Pembroke.",
     url: "https://hackuncp.github.io",
     siteName: "HackUNCP",
     images: [
@@ -30,7 +33,7 @@ export const metadata: Metadata = {
         url: "/logos/HackUNCP Logo.png",
         width: 1200,
         height: 630,
-        alt: "HackUNCP Logo",
+        alt: "HackUNCP AI Hackathon Logo",
       },
     ],
     type: "website",
@@ -39,7 +42,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "HackUNCP 2026 | Premier AI Hackathon",
     description:
-      "UNC Pembroke’s official AI hackathon, hosted by AI@UNCP. Build something amazing in 24 hours.",
+      "Organized by AI@UNCP at UNC Pembroke, HackUNCP 2026 brings together student innovators to solve real-world challenges with AI.",
     images: ["/logos/HackUNCP Logo.png"],
   },
   icons: {
@@ -48,12 +51,12 @@ export const metadata: Metadata = {
   },
 };
 
-// Root layout
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+      <head />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
