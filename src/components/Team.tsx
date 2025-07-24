@@ -18,7 +18,7 @@ export default function Team() {
   const leadership = {
     advisor: {
       name: "Mark Hunt",
-      role: "Faculty Advisor",
+      role: "Advisor",
       organization: "AI@UNCP & HACKUNCP 2026",
       linkedin: "https://www.linkedin.com/in/mark-hunt-m-b-a-3291b317/",
       photo: "./team/mark_hunt.png",
