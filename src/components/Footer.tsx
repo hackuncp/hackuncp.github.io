@@ -134,7 +134,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://hackuncp.org/projects"
+                  href="https://hackuncp-2026.devpost.com/"
                   className="text-gray-300 hover:text-white transition-colors duration-200"
                 >
                  HackUNCP 2026 Devpost
