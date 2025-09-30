@@ -27,7 +27,7 @@ export default function Team() {
         name: "Najmul Hasan",
         role: "President",
         organization: "AI@UNCP & Lead Organizer, HACKUNCP 2026",
-        photo: "./team/najmul-hasan.jpg",
+        photo: "./team/najmul_hasan.jpg",
       },
       {
         name: "Md. Tanzimul A. Fahim",
