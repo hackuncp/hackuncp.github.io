@@ -22,7 +22,7 @@ export default function Team() {
 
   const PersonCard = ({ person }: { person: TeamMember }) => (
     <div className="text-center">
-      <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-slate-800">
+      <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-neutral-800">
         <img
           src={person.photo}
           alt={person.name}
@@ -34,7 +34,7 @@ export default function Team() {
         />
       </div>
       <p className="text-white font-medium">{person.name}</p>
-      <p className="text-gray-500 text-sm">{person.role}</p>
+      <p className="text-white/50 text-sm">{person.role}</p>
     </div>
   );
 
@@ -48,13 +48,13 @@ export default function Team() {
 
         {/* Advisor */}
         <div className="mb-16">
-          <p className="text-gray-500 text-sm uppercase tracking-wider mb-8">Advisor</p>
+          <p className="text-white/50 text-sm uppercase tracking-wider mb-8">Advisor</p>
           <PersonCard person={advisor} />
         </div>
 
         {/* Officers */}
         <div>
-          <p className="text-gray-500 text-sm uppercase tracking-wider mb-8">Organizers</p>
+          <p className="text-white/50 text-sm uppercase tracking-wider mb-8">Organizers</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {officers.map((person, index) => (
               <PersonCard key={index} person={person} />

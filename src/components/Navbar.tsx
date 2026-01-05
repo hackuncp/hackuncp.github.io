@@ -32,7 +32,7 @@ export default function Navbar() {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? 'bg-slate-900/95 backdrop-blur-md border-b border-white/10' : 'bg-transparent'
+      scrolled ? 'bg-black/95 backdrop-blur-md border-b border-white/10 shadow-sm' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -48,7 +48,7 @@ export default function Navbar() {
               height={32}
               className="w-8 h-8"
             />
-            <span className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-amber-400 to-green-400">
+            <span className="text-xl font-bold text-white">
               HackUNCP
             </span>
           </button>
@@ -59,14 +59,14 @@ export default function Navbar() {
               <button
                 key={item.name}
                 onClick={() => handleNavClick(item.href)}
-                className="text-gray-300 hover:text-white transition-colors text-sm font-medium"
+                className="transition-colors text-sm font-medium text-white/60 hover:text-white"
               >
                 {item.name}
               </button>
             ))}
             <button
               onClick={() => window.open('https://forms.gle/9nKvHB9M3oEAtQXg7', '_blank')}
-              className="px-5 py-2 bg-gradient-to-r from-teal-500 to-amber-500 text-white text-sm font-semibold rounded-full hover:from-teal-600 hover:to-amber-600 transition-all"
+              className="px-5 py-2 bg-[#8C734C] text-white text-sm font-semibold rounded-full hover:bg-[#A08563] transition-all"
             >
               Apply Now
             </button>
@@ -84,13 +84,13 @@ export default function Navbar() {
 
         {/* Mobile menu */}
         {isMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-slate-900/98 backdrop-blur-md border-b border-white/10">
+          <div className="md:hidden absolute top-full left-0 right-0 bg-black/98 backdrop-blur-md border-b border-white/10 shadow-lg">
             <div className="px-4 py-4 space-y-1">
               {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => handleNavClick(item.href)}
-                  className="block w-full text-left px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                  className="block w-full text-left px-4 py-3 text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
                 >
                   {item.name}
                 </button>
@@ -100,7 +100,7 @@ export default function Navbar() {
                   window.open('https://forms.gle/9nKvHB9M3oEAtQXg7', '_blank');
                   setIsMenuOpen(false);
                 }}
-                className="w-full mt-4 px-4 py-3 bg-gradient-to-r from-teal-500 to-amber-500 text-white font-semibold rounded-lg"
+                className="w-full mt-4 px-4 py-3 bg-[#8C734C] text-white font-semibold rounded-lg hover:bg-[#A08563] transition-colors"
               >
                 Apply Now
               </button>

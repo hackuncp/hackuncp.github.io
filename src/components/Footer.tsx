@@ -1,202 +1,152 @@
-/**
- * HackUNCP 2026 Footer Component
- * 
- * Professional footer with contact information, social links, navigation,
- * and legal pages. Includes smooth scrolling and accessibility features.
- * 
- * @version 1.0.0
- * @author AI@UNCP
- * @lastUpdated July 2025
- */
-
 'use client';
 
-import { Code, Mail, Instagram, MapPin, Calendar, ExternalLink, Linkedin, Facebook } from 'lucide-react';
+import { Mail, ArrowUpRight } from 'lucide-react';
 
 export default function Footer() {
-  const socialLinks = [ 
-    { icon: <Linkedin className="h-5 w-5" />, label: "LinkedIn", url: "https://www.linkedin.com/showcase/hackuncp/" },
-    { icon: <Instagram className="h-5 w-5" />, label: "Instagram", url: "https://instagram.com/hackuncp" },
-    { icon: <Facebook className="h-5 w-5" />, label: "Facebook", url: "https://www.facebook.com/HackUNCP/" },
-    { icon: <Mail className="h-5 w-5" />, label: "Email", url: "mailto:team@hackuncp.com" }
-  ];
-
-  const quickLinks = [
-    { label: "About", href: "#about" },
-    { label: "HackUNCP 2026", href: "#2026-event" },
-    { label: "Sponsors", href: "#sponsors" },
-    { label: "2025 Recap", href: "#2025-recap" },
-    { label: "Team", href: "#team-section" },
-    { label: "AI@UNCP", href: "#ai-uncp" },
-    { label: "FAQ", href: "#faq" }
-  ];
-
-  const legalLinks = [
-    { label: "Code of Conduct", href: "/code-of-conduct", external: true },
-    { label: "Privacy Policy", href: "/privacy-policy", external: true }
-  ];
-
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <footer className="bg-gradient-to-br from-slate-900 via-slate-800 to-black backdrop-blur-sm border-t border-teal-500/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main footer content */}
-        <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          
-          {/* Brand section */}
+    <footer className="bg-neutral-950 border-t border-white/10">
+      <div className="max-w-6xl mx-auto px-6 py-20">
+        {/* Main grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <Code className="h-8 w-8 text-teal-400" />
-              <span className="text-2xl font-bold text-white">HackUNCP</span>
-            </div>
-            <p className="text-gray-300 mb-6 max-w-md">
-              University of North Carolina Pembroke&#39;s premier hackathon, fostering innovation, 
-              collaboration, and the next generation of tech leaders.
+            <h3 className="text-2xl font-bold text-white mb-4">HackUNCP</h3>
+            <p className="text-white/60 mb-6 max-w-sm">
+              UNC Pembroke&apos;s AI-focused hackathon. Building the next generation of innovators.
             </p>
-            
-            {/* Contact information */}
-            <div className="space-y-3 mb-6">
-              <div className="flex items-center gap-3 text-gray-300">
-                <MapPin className="h-4 w-4 text-teal-400" />
-                <span>University of North Carolina Pembroke, Pembroke, NC</span>
-              </div>
-              <div className="flex items-center gap-3 text-gray-300">
-                <Calendar className="h-4 w-4 text-teal-400" />
-                <span>February 21-22, 2026</span>
-              </div>
-              <div className="flex items-center gap-3 text-gray-300">
-                <Mail className="h-4 w-4 text-teal-400" />
-                <a href="mailto:team@hackuncp.com" className="hover:text-white transition-colors">
-                  team@hackuncp.com
-                </a>
-              </div>
-            </div>
-            
-            {/* Social media links */}
-            <div className="flex space-x-4">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 bg-white/5 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-200"
-                  aria-label={social.label}
-                >
-                  {social.icon}
-                </a>
-              ))}
+            <div className="space-y-2 text-white/60">
+              <p>February 21-22, 2026</p>
+              <p>UNC Pembroke, NC</p>
+              <a href="mailto:team@hackuncp.com" className="hover:text-[#8C734C] transition-colors">
+                team@hackuncp.com
+              </a>
             </div>
           </div>
 
-          {/* Quick navigation links */}
+          {/* Links */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Quick Links</h3>
+            <h4 className="text-sm font-medium text-white/50 uppercase tracking-wider mb-4">Navigate</h4>
             <ul className="space-y-3">
-              {quickLinks.map((link, index) => (
-                <li key={index}>
+              {['About', '2026', 'Sponsors', '2025 Recap', 'Team', 'AI@UNCP', 'FAQ'].map((item) => (
+                <li key={item}>
                   <button
-                    onClick={() => scrollToSection(link.href.slice(1))}
-                    className="text-gray-300 hover:text-white transition-colors duration-200"
+                    onClick={() => scrollToSection(
+                      item === '2026' ? '2026-event' :
+                      item === '2025 Recap' ? '2025-recap' :
+                      item === 'AI@UNCP' ? 'ai-uncp' :
+                      item === 'Team' ? 'team-section' :
+                      item.toLowerCase()
+                    )}
+                    className="text-white/60 hover:text-[#8C734C] transition-colors"
                   >
-                    {link.label}
+                    {item}
                   </button>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Resources and legal links */}
+          {/* Resources */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Resources</h3>
+            <h4 className="text-sm font-medium text-white/50 uppercase tracking-wider mb-4">Resources</h4>
             <ul className="space-y-3">
               <li>
                 <a
                   href="https://forms.gle/9nKvHB9M3oEAtQXg7"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-white transition-colors duration-200 flex items-center gap-2"
+                  className="text-white/60 hover:text-[#8C734C] transition-colors inline-flex items-center gap-1"
                 >
-                  Apply Now
-                  <ExternalLink className="h-3 w-3" />
+                  Apply Now <ArrowUpRight size={14} />
                 </a>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection('sponsors')}
-                  className="text-gray-300 hover:text-white transition-colors duration-200"
-                >
-                  Become a Sponsor
-                </button>
               </li>
               <li>
                 <a
                   href="https://hackuncp-2026.devpost.com/"
-                  className="text-gray-300 hover:text-white transition-colors duration-200"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/60 hover:text-[#8C734C] transition-colors inline-flex items-center gap-1"
                 >
-                 HackUNCP 2026 Devpost
+                  Devpost <ArrowUpRight size={14} />
                 </a>
               </li>
               <li>
-                <a 
+                <a
                   href="https://hackuncp-2025.devpost.com/project-gallery"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-white transition-colors duration-200 flex items-center gap-2"
+                  className="text-white/60 hover:text-[#8C734C] transition-colors inline-flex items-center gap-1"
                 >
-                  Past Projects
-                  <ExternalLink className="h-3 w-3" />
+                  Past Projects <ArrowUpRight size={14} />
+                </a>
+              </li>
+              <li>
+                <a href="/code-of-conduct" className="text-white/60 hover:text-[#8C734C] transition-colors">
+                  Code of Conduct
+                </a>
+              </li>
+              <li>
+                <a href="/privacy-policy" className="text-white/60 hover:text-[#8C734C] transition-colors">
+                  Privacy Policy
                 </a>
               </li>
             </ul>
-            
-            {/* Legal section */}
-            <h3 className="text-white font-semibold mb-4 mt-8">Legal</h3>
-            <ul className="space-y-3">
-              {legalLinks.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link.href}
-                    target={link.external ? "_blank" : undefined}
-                    rel={link.external ? "noopener noreferrer" : undefined}
-                    className="text-gray-300 hover:text-white transition-colors duration-200"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
 
-        {/* Bottom footer */}
-        <div className="py-6 border-t border-white/10">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-gray-300 text-sm text-center md:text-left">
-              © 2026 HackUNCP. All rights reserved.
-            </div>
-            <div className="flex flex-col md:flex-row items-center gap-4 text-sm text-gray-300">
-              <span>Organized by <a href="#ai-uncp" onClick={() => scrollToSection('ai-uncp')} className="text-teal-400 font-medium hover:text-teal-300 transition-colors cursor-pointer">AI@UNCP</a></span>
-              <span className="hidden md:inline text-gray-500">•</span>
-              <span>Built by <a href="#ai-uncp" onClick={() => scrollToSection('ai-uncp')} className="text-amber-400 font-medium hover:text-amber-300 transition-colors cursor-pointer">AI@UNCP</a></span>
-            </div>
-          </div>
-        </div>
+        {/* Bottom */}
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-white/50 text-sm">
+            © 2026 HackUNCP. Organized by AI@UNCP.
+          </p>
 
-        {/* Back to top button */}
-        <div className="absolute right-8 -top-6">
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="p-3 bg-gradient-to-r from-teal-500 to-amber-500 text-white rounded-full shadow-lg hover:from-teal-600 hover:to-amber-600 transition-all duration-300 transform hover:scale-105"
-            aria-label="Back to top"
-          >
-            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-            </svg>
-          </button>
+          {/* Social */}
+          <div className="flex items-center gap-4">
+            <a
+              href="https://www.linkedin.com/showcase/hackuncp/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/50 hover:text-[#8C734C] transition-colors"
+              aria-label="LinkedIn"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
+            <a
+              href="https://instagram.com/hackuncp"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/50 hover:text-[#8C734C] transition-colors"
+              aria-label="Instagram"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+            <a
+              href="https://www.facebook.com/HackUNCP/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/50 hover:text-[#8C734C] transition-colors"
+              aria-label="Facebook"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </a>
+            <a
+              href="mailto:team@hackuncp.com"
+              className="text-white/50 hover:text-[#8C734C] transition-colors"
+              aria-label="Email"
+            >
+              <Mail size={20} />
+            </a>
+          </div>
         </div>
       </div>
     </footer>

@@ -36,8 +36,8 @@ export default function HeroSection() {
     };
     resizeCanvas();
 
-    const colors = ['#3E8B94', '#B8232F', '#495965', '#4C7329'];
-    const particles = Array.from({ length: 100 }, () => ({
+    const colors = ['#8C734C', '#BFA77A'];
+    const particles = Array.from({ length: 60 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       r: Math.random() * 2 + 0.5,
@@ -71,11 +71,11 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-screen text-white text-center overflow-hidden px-4 py-8 bg-gradient-to-br from-slate-900 via-black to-slate-800">
-      <canvas ref={canvasRef} className="absolute inset-0 z-0" />
+    <section className="relative flex flex-col items-center justify-center min-h-screen text-white text-center overflow-hidden px-4 py-8 bg-black">
+      <canvas ref={canvasRef} className="absolute inset-0 z-0 opacity-40" />
 
       {/* Soft glow */}
-      <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] -translate-x-1/2 -translate-y-1/2 bg-teal-500/5 rounded-full blur-3xl" />
+      <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] -translate-x-1/2 -translate-y-1/2 bg-[#8C734C]/20 rounded-full blur-3xl" />
 
       {/* Logo */}
       <div className="relative z-10 mb-6">
@@ -91,28 +91,28 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 max-w-5xl w-full px-4">
-        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight bg-gradient-to-r from-teal-400 via-amber-400 to-green-400 bg-clip-text text-transparent">
+        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-white">
           HACKUNCP
         </h1>
-        <p className="mt-2 text-3xl sm:text-4xl md:text-5xl text-amber-600 font-bold">2026</p>
+        <p className="mt-2 text-3xl sm:text-4xl md:text-5xl text-[#8C734C] font-bold">2026</p>
 
-        <p className="mt-6 text-lg sm:text-xl md:text-2xl text-gray-300">
+        <p className="mt-6 text-lg sm:text-xl md:text-2xl text-white/70">
           24 hours of innovation, collaboration, and competition at UNC Pembroke.
           <br />
-          <span className="text-teal-400 font-semibold">February 21-22</span>
+          <span className="text-[#8C734C] font-semibold">February 21-22</span>
         </p>
 
         {/* Deadline extended notice */}
-        <div className="mt-6 inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-amber-500/20 to-teal-500/20 border border-amber-400/50 rounded-full">
-          <span className="text-amber-400 font-bold">Deadline Extended!</span>
-          <span className="text-white">Apply by <span className="text-teal-400 font-semibold">January 20, 2026</span></span>
+        <div className="mt-6 inline-flex items-center gap-3 px-6 py-3 bg-[#8C734C]/20 border border-[#8C734C]/40 rounded-full">
+          <span className="text-[#8C734C] font-semibold">Deadline Extended</span>
+          <span className="text-white/70">Apply by January 20, 2026</span>
         </div>
 
         {/* CTAs */}
         <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
           <button
             onClick={() => window.open('https://forms.gle/9nKvHB9M3oEAtQXg7', '_blank')}
-            className="px-8 py-4 bg-gradient-to-r from-teal-500 to-amber-500 text-white font-bold rounded-full hover:from-teal-600 hover:to-amber-600 transition-all duration-300 hover:scale-105 text-lg"
+            className="px-8 py-4 bg-[#8C734C] text-white font-semibold rounded-full hover:bg-[#A08563] transition-all duration-300 text-lg"
           >
             Apply Now
           </button>
@@ -135,10 +135,10 @@ export default function HeroSection() {
             { label: 'SEC', value: timeLeft.seconds }
           ].map(({ label, value }) => (
             <div key={label} className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-white font-mono">
+              <div className="text-4xl md:text-5xl font-bold text-[#8C734C] font-mono">
                 {String(value).padStart(2, '0')}
               </div>
-              <div className="text-gray-400 text-sm mt-1">{label}</div>
+              <div className="text-white/50 text-sm mt-1">{label}</div>
             </div>
           ))}
         </div>

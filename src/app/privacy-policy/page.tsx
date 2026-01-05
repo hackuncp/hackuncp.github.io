@@ -1,14 +1,3 @@
-/**
- * HackUNCP 2026 Privacy Policy Page
- * 
- * A comprehensive privacy policy for hackathon participants that provides
- * transparent information about data collection, usage, and user rights.
- * 
- * @version 1.0.0
- * @author AI@UNCP
- * @lastUpdated July 2025
- */
-
 import { Metadata } from 'next';
 import { ArrowLeft, Shield, Database, UserCheck } from 'lucide-react';
 import Link from 'next/link';

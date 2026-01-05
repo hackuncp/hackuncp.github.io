@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-// Load Google Fonts
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -13,7 +12,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Full SEO Metadata with Google Verification and Favicons
 export const metadata: Metadata = {
   metadataBase: new URL("https://hackuncp.github.io"),
   title: "HackUNCP 2026 | Premier AI Hackathon",
