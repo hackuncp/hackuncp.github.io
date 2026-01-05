@@ -96,7 +96,7 @@ export default function FAQSection() {
           id: "application-deadlines",
           question: "When are the application deadlines?",
           answer:
-            "We have two application deadlines: Priority Deadline on December 6, 2025, and Regular Deadline on January 3, 2026. Priority decisions will be released by December 23, 2025. Regular decisions will be released by January 20, 2026. Applying early allows you to plan ahead with more time and secure your spot sooner!",
+            "We have two application deadlines: Priority Deadline was December 6, 2025 (now closed), and Regular Deadline has been extended to January 20, 2026! Decisions will be released on a rolling basis. Don't miss this extended opportunity to secure your spot at HackUNCP 2026!",
         },
         {
           id: "how-to-apply",
