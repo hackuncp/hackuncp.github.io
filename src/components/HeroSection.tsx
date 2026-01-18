@@ -105,7 +105,7 @@ export default function HeroSection() {
         {/* Deadline extended notice */}
         <div className="mt-6 inline-flex items-center gap-3 px-6 py-3 bg-[#8C734C]/20 border border-[#8C734C]/40 rounded-full">
           <span className="text-[#8C734C] font-semibold">Deadline Extended</span>
-          <span className="text-white/70">Apply by January 20, 2026</span>
+          <span className="text-white/70">Apply by January 25, 2026</span>
         </div>
 
         {/* CTAs */}

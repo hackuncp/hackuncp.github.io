@@ -73,7 +73,7 @@ export default function FAQSection() {
           id: 'application-deadlines',
           question: 'When are the application deadlines?',
           answer:
-            'We have two application deadlines: Priority Deadline was December 6, 2025 (now closed), and Regular Deadline has been extended to January 20, 2026! Decisions will be released on a rolling basis. Don\'t miss this extended opportunity to secure your spot at HackUNCP 2026!',
+            'We have two application deadlines: Priority Deadline was December 6, 2025 (now closed), and Regular Deadline has been extended to January 25, 2026! Decisions will be released on a rolling basis. Don\'t miss this extended opportunity to secure your spot at HackUNCP 2026!',
         },
         {
           id: 'how-to-apply',
