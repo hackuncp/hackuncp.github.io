@@ -90,6 +90,16 @@ export default function Footer() {
                 </a>
               </li>
               <li>
+                <a
+                  href="https://github.com/MLH/mlh-policies/blob/main/code-of-conduct.md"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/60 hover:text-[#8C734C] transition-colors inline-flex items-center gap-1"
+                >
+                  MLH Code of Conduct <ArrowUpRight size={14} />
+                </a>
+              </li>
+              <li>
                 <a href="/privacy-policy" className="text-white/60 hover:text-[#8C734C] transition-colors">
                   Privacy Policy
                 </a>

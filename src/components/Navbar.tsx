@@ -34,12 +34,12 @@ export default function Navbar() {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       scrolled ? 'bg-black/95 backdrop-blur-md border-b border-white/10 shadow-sm' : 'bg-transparent'
     }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+      <div className="px-4 sm:px-6 lg:px-8 lg:pr-28">
+        <div className="flex items-center justify-center h-16 relative">
           {/* Logo */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="flex items-center gap-2"
+            className="absolute left-0 flex items-center gap-2"
           >
             <Image
               src="/logos/HackUNCP Logo.png"
@@ -75,7 +75,7 @@ export default function Navbar() {
           {/* Mobile menu toggle */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-white"
+            className="md:hidden absolute right-0 p-2 text-white"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
