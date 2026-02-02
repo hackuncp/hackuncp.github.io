@@ -24,21 +24,21 @@ export default function Recap2025Section() {
   }, [photoSlides.length]);
 
   return (
-    <section id="2025-recap" className="py-32 relative bg-neutral-950">
+    <section id="2025-recap" className="py-32 relative bg-[#f5f0eb]">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="max-w-4xl mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+          <h2 className="text-4xl md:text-6xl font-bold text-black mb-6">
             HackUNCP 2025
           </h2>
-          <p className="text-xl text-white/60">
+          <p className="text-xl text-black/50">
             Our inaugural hackathon.
           </p>
         </div>
 
         {/* Photo carousel */}
         <div className="relative mb-20 group">
-          <div className="relative aspect-video rounded-lg overflow-hidden bg-neutral-900">
+          <div className="relative aspect-video rounded-lg overflow-hidden bg-black/10">
             {photoSlides.map((slide, index) => (
               <img
                 key={index}
@@ -73,22 +73,22 @@ export default function Recap2025Section() {
 
         {/* Winners */}
         <div className="mb-20">
-          <h3 className="text-sm font-medium text-white/50 uppercase tracking-wider mb-8">
+          <h3 className="text-sm font-medium text-black/40 uppercase tracking-wider mb-8">
             Winners
           </h3>
 
           <div className="space-y-6">
             {winners.map((winner, index) => (
-              <div key={index} className="flex items-baseline justify-between border-b border-white/10 pb-6">
+              <div key={index} className="flex items-baseline justify-between border-b border-black/10 pb-6">
                 <div className="flex items-baseline gap-6">
                   <span className="text-3xl font-bold text-[#8C734C] w-12">{winner.place}</span>
-                  <span className="text-xl text-white font-medium">{winner.team}</span>
+                  <span className="text-xl text-black font-medium">{winner.team}</span>
                 </div>
                 <a
                   href={winner.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/40 hover:text-[#8C734C] transition-colors"
+                  className="text-black/30 hover:text-[#8C734C] transition-colors"
                 >
                   <ArrowUpRight size={20} />
                 </a>

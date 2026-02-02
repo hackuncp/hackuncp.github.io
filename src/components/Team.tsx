@@ -22,7 +22,7 @@ export default function Team() {
 
   const PersonCard = ({ person }: { person: TeamMember }) => (
     <div className="text-center">
-      <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-neutral-800">
+      <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-black/10">
         <img
           src={person.photo}
           alt={person.name}
@@ -33,28 +33,28 @@ export default function Team() {
           }}
         />
       </div>
-      <p className="text-white font-medium">{person.name}</p>
-      <p className="text-white/50 text-sm">{person.role}</p>
+      <p className="text-black font-medium">{person.name}</p>
+      <p className="text-black/50 text-sm">{person.role}</p>
     </div>
   );
 
   return (
-    <section id="team-section" className="py-32 relative bg-black">
-      <div className="max-w-4xl mx-auto px-6">
+    <section id="team-section" className="relative bg-[#f5f0eb]">
+      <div className="py-32 max-w-4xl mx-auto px-6">
         {/* Header */}
-        <h2 className="text-4xl md:text-6xl font-bold text-white mb-16">
+        <h2 className="text-4xl md:text-6xl font-bold text-black mb-16">
           Team
         </h2>
 
         {/* Advisor */}
         <div className="mb-16">
-          <p className="text-white/50 text-sm uppercase tracking-wider mb-8">Advisor</p>
+          <p className="text-black/40 text-sm uppercase tracking-wider mb-8">Advisor</p>
           <PersonCard person={advisor} />
         </div>
 
         {/* Officers */}
         <div>
-          <p className="text-white/50 text-sm uppercase tracking-wider mb-8">Organizers</p>
+          <p className="text-black/40 text-sm uppercase tracking-wider mb-8">Organizers</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {officers.map((person, index) => (
               <PersonCard key={index} person={person} />
@@ -62,6 +62,9 @@ export default function Team() {
           </div>
         </div>
       </div>
+
+      {/* Gradient transition from light to dark */}
+      <div className="h-24 bg-gradient-to-b from-[#f5f0eb] to-black" />
     </section>
   );
 }
