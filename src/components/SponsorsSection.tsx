@@ -3,7 +3,14 @@
 import Image from 'next/image';
 import { Mail } from 'lucide-react';
 
-const sponsors = [
+interface Sponsor {
+  name: string;
+  logo: string;
+  url: string;
+  scale?: string;
+}
+
+const sponsors: Sponsor[] = [
   {
     name: 'CodeCrafters',
     logo: '/sponsors_2026/CodeCrafters.io full logo full text (Dark text).png',
@@ -21,13 +28,19 @@ const sponsors = [
   },
   {
     name: "Byrd's Computer Service",
-    logo: '/sponsors_2026/BCS.PNG',
+    logo: '/sponsors_2026/BCS.png',
     url: 'https://www.byrdscomputerservice.com/',
   },
   {
     name: 'Thomas College of Business and Economics - UNC Pembroke',
     logo: '/sponsors_2026/TCOBE_LOGO.png',
     url: 'https://www.uncp.edu/academics/colleges-and-schools/thomas-college-of-business-and-economics/index.html',
+  },
+  {
+    name: 'Sakura Sky',
+    logo: '/sponsors_2026/Sakura Sky.png',
+    url: '',
+    scale: 'scale-[4]',
   },
 ];
 
@@ -49,44 +62,48 @@ export default function SponsorsSection() {
 
           {/* Sponsor logos - top row */}
           <div className="flex flex-wrap justify-center gap-12 mb-12">
-            {sponsors.slice(0, 3).map((sponsor) => (
-              <a
-                key={sponsor.name}
-                href={sponsor.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center h-[100px] w-[260px] hover:opacity-70 transition-opacity duration-300"
-              >
-                <Image
-                  src={sponsor.logo}
-                  alt={sponsor.name}
-                  width={260}
-                  height={100}
-                  className="object-contain w-full h-full"
-                />
-              </a>
-            ))}
+            {sponsors.slice(0, 3).map((sponsor) => {
+              const Wrapper = sponsor.url ? 'a' : 'div';
+              const linkProps = sponsor.url ? { href: sponsor.url, target: '_blank', rel: 'noopener noreferrer' } : {};
+              return (
+                <Wrapper
+                  key={sponsor.name}
+                  {...linkProps}
+                  className="flex items-center justify-center h-[100px] w-[260px] hover:opacity-70 transition-opacity duration-300"
+                >
+                  <Image
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    width={260}
+                    height={100}
+                    className={`object-contain w-full h-full ${sponsor.scale || ''}`}
+                  />
+                </Wrapper>
+              );
+            })}
           </div>
 
           {/* Sponsor logos - bottom row */}
           <div className="flex flex-wrap justify-center gap-12 mb-20">
-            {sponsors.slice(3).map((sponsor) => (
-              <a
-                key={sponsor.name}
-                href={sponsor.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center h-[100px] w-[260px] hover:opacity-70 transition-opacity duration-300"
-              >
-                <Image
-                  src={sponsor.logo}
-                  alt={sponsor.name}
-                  width={260}
-                  height={100}
-                  className="object-contain w-full h-full"
-                />
-              </a>
-            ))}
+            {sponsors.slice(3).map((sponsor) => {
+              const Wrapper = sponsor.url ? 'a' : 'div';
+              const linkProps = sponsor.url ? { href: sponsor.url, target: '_blank', rel: 'noopener noreferrer' } : {};
+              return (
+                <Wrapper
+                  key={sponsor.name}
+                  {...linkProps}
+                  className="flex items-center justify-center h-[100px] w-[260px] hover:opacity-70 transition-opacity duration-300"
+                >
+                  <Image
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    width={260}
+                    height={100}
+                    className={`object-contain w-full h-full ${sponsor.scale || ''}`}
+                  />
+                </Wrapper>
+              );
+            })}
           </div>
 
           {/* Divider */}
