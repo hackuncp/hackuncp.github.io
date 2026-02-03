@@ -15,7 +15,6 @@ export default function Team() {
 
   const officers: TeamMember[] = [
     { name: "Najmul Hasan", role: "Lead Organizer", photo: "./team/najmul_hasan.jpg" },
-    { name: "Md. Tanzimul A. Fahim", role: "Organizer", photo: "./team/fahim.jpeg" },
     { name: "Aidan Kuster", role: "Organizer", photo: "./team/aiden.JPEG" },
     { name: "Marcus Bland", role: "Organizer", photo: "./team/marcus.jpeg" },
   ];
@@ -55,7 +54,7 @@ export default function Team() {
         {/* Officers */}
         <div>
           <p className="text-black/40 text-sm uppercase tracking-wider mb-8">Organizers</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
             {officers.map((person, index) => (
               <PersonCard key={index} person={person} />
             ))}
