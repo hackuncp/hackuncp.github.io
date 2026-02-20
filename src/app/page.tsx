@@ -5,6 +5,7 @@ import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
 import Recap2025Section from '@/components/Recap2025Section';
 import Event2026Section from '@/components/Event2026Section';
+import ScheduleSection from '@/components/ScheduleSection';
 import SponsorsSection from '@/components/SponsorsSection';
 import Team from '@/components/Team';
 import AIUNCPSection from '@/components/AIUNCPSection';
@@ -32,6 +33,7 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <Event2026Section />
+      <ScheduleSection />
       <SponsorsSection />
       <Recap2025Section />
       <Team />

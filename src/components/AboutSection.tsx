@@ -43,10 +43,6 @@ export default function AboutSection() {
             <div className="text-5xl font-bold text-[#8C734C]">100+</div>
             <div className="text-white/50 mt-1">hackers</div>
           </div>
-          <div>
-            <div className="text-5xl font-bold text-[#8C734C]">TBA</div>
-            <div className="text-white/50 mt-1">in prizes</div>
-          </div>
         </div>
 
         {/* Tracks section */}

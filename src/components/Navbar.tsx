@@ -17,6 +17,7 @@ export default function Navbar() {
   const navItems = [
     { name: 'About', href: '#about' },
     { name: '2026', href: '#2026-event' },
+    { name: 'Schedule', href: '#schedule' },
     { name: 'Sponsors', href: '#sponsors' },
     { name: '2025 Recap', href: '#2025-recap' },
     { name: 'Team', href: '#team-section' },
