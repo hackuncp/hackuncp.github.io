@@ -16,6 +16,3 @@ npm run lint
 npm run build
 ```
 
-## Deployment
-
-The GitHub Pages workflow deploys the static export when changes reach the `main` branch.
