@@ -1,46 +1,53 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://hackuncp.github.io"),
-  title: "HackUNCP 2026 | Premier AI Hackathon",
+  applicationName: "HackUNCP",
+  title: "HackUNCP",
   description:
-    "HackUNCP 2026 is UNC Pembroke’s flagship AI hackathon organized by AI@UNCP. Join builders, coders, and creatives from across the region.",
+    "HackUNCP was a student-organized AI hackathon at UNC Pembroke. Explore the 2025 and 2026 events, projects, and winners.",
+  keywords: [
+    "HackUNCP",
+    "UNC Pembroke hackathon",
+    "UNCP hackathon",
+    "AI hackathon",
+  ],
+  authors: [{ name: "HackUNCP", url: "https://hackuncp.github.io" }],
+  creator: "HackUNCP",
+  publisher: "HackUNCP",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   verification: {
     google: "Urk5X0IKPxzTGKlDZTJnMg-ZFG-3eHNP1rknY8QnfrU",
   },
   openGraph: {
-    title: "HackUNCP 2026 | Premier AI Hackathon",
+    title: "HackUNCP",
     description:
-      "Build with AI. Compete with purpose. HackUNCP 2026 is organized by AI@UNCP and hosted at UNC Pembroke.",
+      "HackUNCP at UNC Pembroke, featuring the 2025 and 2026 event archives.",
     url: "https://hackuncp.github.io",
     siteName: "HackUNCP",
+    locale: "en_US",
     images: [
       {
         url: "/logos/HackUNCP Logo.png",
-        width: 1200,
-        height: 630,
+        width: 1000,
+        height: 1000,
         alt: "HackUNCP AI Hackathon Logo",
       },
     ],
     type: "website",
   },
   twitter: {
-    card: "summary_large_image",
-    title: "HackUNCP 2026 | Premier AI Hackathon",
+    card: "summary",
+    title: "HackUNCP",
     description:
-      "Organized by AI@UNCP at UNC Pembroke, HackUNCP 2026 brings together student innovators to solve real-world challenges with AI.",
+      "HackUNCP at UNC Pembroke, featuring the 2025 and 2026 event archives.",
     images: ["/logos/HackUNCP Logo.png"],
   },
   icons: {
@@ -54,12 +61,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <head />
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
