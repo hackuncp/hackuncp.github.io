@@ -1,4 +1,5 @@
-# Builds the site and publishes it to GitHub Pages on every push to main.
+# Builds the site in 2027/ and publishes it to GitHub Pages on every push to main.
+# Nothing else in this repo is published.
 # One-time setup in the GitHub repo: Settings → Pages → Source: "GitHub Actions".
 name: Deploy to GitHub Pages
 
@@ -19,12 +20,16 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 2027
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
+          cache-dependency-path: 2027/package-lock.json
       - id: pages
         uses: actions/configure-pages@v5
       - run: npm ci
@@ -34,7 +39,7 @@ jobs:
           NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: out
+          path: 2027/out
 
   deploy:
     needs: build
