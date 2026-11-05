@@ -1197,11 +1197,37 @@ a.index-card:hover {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px 14px;
-  padding: 12px 16px;
+  justify-content: space-between;
+  gap: 12px 20px;
+  padding: 16px 20px;
   border-bottom: 1px solid rgb(70 45 38 / 0.12);
   background: #f3eee8;
+}
+
+.cal-range {
+  display: block;
+  font: 500 19px/1.25 var(--font-sans);
+}
+
+.cal-hours {
+  display: block;
+  margin-top: 2px;
+  color: rgb(43 32 28 / 0.66);
+  font-size: 15px;
+}
+
+.cal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+}
+
+.cal-ics {
+  color: var(--color-cocoa);
   font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .cal-days {
@@ -1215,7 +1241,7 @@ a.index-card:hover {
 }
 
 .cal-day {
-  padding: 20px 20px 22px;
+  padding: 24px 20px 26px;
 }
 
 .cal-day + .cal-day {
@@ -1223,6 +1249,10 @@ a.index-card:hover {
 }
 
 @media (min-width: 768px) {
+  .cal-day {
+    padding: 26px 28px 30px;
+  }
+
   .cal-day + .cal-day {
     border-top: 0;
     border-left: 1px solid rgb(70 45 38 / 0.12);
@@ -1231,62 +1261,129 @@ a.index-card:hover {
 
 .cal-date {
   display: flex;
-  align-items: baseline;
-  gap: 10px;
-  font: 400 28px/1.1 var(--font-display);
-  letter-spacing: -0.02em;
+  align-items: center;
+  gap: 14px;
+}
+
+/* A tear-off calendar page, like the Calendar app's icon. */
+.cal-leaf {
+  display: grid;
+  flex: none;
+  width: 62px;
+  overflow: hidden;
+  border: 1px solid rgb(70 45 38 / 0.2);
+  border-radius: 10px;
+  background: #fff;
+  text-align: center;
+}
+
+.cal-leaf span:first-child {
+  padding: 4px 0;
+  background: var(--color-brick);
+  color: var(--color-cream);
+  font: 600 11px/1 var(--font-sans);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.cal-leaf span:last-child {
+  padding: 6px 0 7px;
+  font: 400 30px/1 var(--font-display);
 }
 
 .cal-dow {
+  display: block;
   color: var(--color-gold);
-  font: 600 12px/1 var(--font-sans);
+  font: 600 13px/1 var(--font-sans);
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
+.cal-full {
+  display: block;
+  margin-top: 6px;
+  font: 400 30px/1.05 var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* One timeline: the time, a dot on the line, then what's happening. */
 .cal-events {
+  --cal-rail: 94px;
+  position: relative;
   display: grid;
-  gap: 8px;
-  margin-top: 14px;
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.cal-events::before {
+  content: "";
+  position: absolute;
+  left: var(--cal-rail);
+  top: 10px;
+  bottom: 10px;
+  width: 1px;
+  background: rgb(70 45 38 / 0.2);
 }
 
 .cal-event {
+  position: relative;
   display: grid;
-  grid-template-columns: 76px 1fr auto;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 12px;
-  border-left: 3px solid var(--color-rose-btn);
-  border-radius: 4px 8px 8px 4px;
-  background: rgb(207 161 152 / 0.16);
-  font-size: 16px;
+  grid-template-columns: var(--cal-rail) 1fr;
+  column-gap: 20px;
+  align-items: baseline;
+}
+
+.cal-event::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--cal-rail) - 5px);
+  top: 7px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--color-brick);
+  box-shadow: 0 0 0 3px #fbf9f6;
 }
 
 .cal-time {
   color: var(--color-cocoa);
-  font: 500 13px/1 var(--font-mono);
+  font: 500 15px/1.4 var(--font-mono);
 }
 
-.cal-event[data-tbd] {
-  border-left-color: rgb(43 32 28 / 0.2);
-  background: rgb(43 32 28 / 0.04);
+.cal-title {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.cal-event[data-tbd]::before {
+  border: 2px solid rgb(70 45 38 / 0.35);
+  background: #fbf9f6;
 }
 
 .cal-event[data-tbd] .cal-time {
-  color: rgb(43 32 28 / 0.45);
+  color: rgb(43 32 28 / 0.6);
 }
 
 .cal-last {
-  color: rgb(43 32 28 / 0.45);
-  font: 400 12px/1 var(--font-mono);
-  white-space: nowrap;
+  grid-column: 2;
+  margin-top: 2px;
+  color: rgb(43 32 28 / 0.66);
+  font-size: 14px;
 }
 
 .cal-note {
-  padding: 14px 20px 18px;
+  padding: 16px 20px 20px;
   border-top: 1px solid rgb(70 45 38 / 0.12);
-  color: rgb(43 32 28 / 0.55);
-  font-size: 14px;
+  color: rgb(43 32 28 / 0.66);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .cal-note {
+    padding-inline: 28px;
+  }
 }
 
 /* ------------------------------------------------------------------------ */
@@ -1419,59 +1516,124 @@ a.index-card:hover {
   opacity: 0.25;
 }
 
-.photos-toolbar {
+.photos-app {
+  container-type: inline-size;
+}
+
+.photos-profile {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 10px;
-  padding: 12px 16px;
+  gap: 8px 14px;
+  padding: 16px 20px;
   border-bottom: 1px solid rgb(70 45 38 / 0.12);
   background: #f3eee8;
 }
 
-.photos-grid {
-  display: flex;
-  gap: 18px;
-  overflow-x: auto;
-  padding: 20px 16px 24px;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
+.photos-avatar {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border: 2px solid var(--color-rose-btn);
+  border-radius: 50%;
+  background: #fff;
 }
 
-.photos-grid > li {
-  flex: 0 0 min(72%, 280px);
-  scroll-snap-align: start;
+.photos-avatar img {
+  width: 38px;
+  height: auto;
 }
 
-@media (min-width: 700px) {
-  .photos-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 28px 22px;
-    overflow: visible;
-    padding: 24px;
-  }
+.photos-handle {
+  display: block;
+  font: 500 18px/1.2 var(--font-sans);
 }
 
-@media (min-width: 1024px) {
-  .photos-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
+.photos-tagline {
+  display: block;
+  margin-top: 2px;
+  color: rgb(43 32 28 / 0.66);
+  font-size: 15px;
+}
+
+.photos-soon {
+  margin-left: auto;
+  color: rgb(43 32 28 / 0.6);
+  font-size: 14px;
+}
+
+.photos-feed {
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+}
+
+.photo-post {
+  display: grid;
+  grid-template-columns: 104px 1fr;
+  gap: 16px;
+  align-items: center;
+}
+
+.photo-post[data-lead] {
+  grid-template-columns: 1fr;
+  align-items: start;
+  padding-bottom: 4px;
+}
+
+.photo-post button {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
 .photo-post img {
+  aspect-ratio: 1;
+  width: 100%;
+  object-fit: cover;
   transition: scale 0.4s ease;
+}
+
+.photo-post[data-lead] img {
+  aspect-ratio: 3 / 2;
 }
 
 .photo-post button:hover img {
   scale: 1.04;
 }
 
+@container (min-width: 760px) {
+  .photos-feed {
+    grid-template-columns: 1.3fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 18px 30px;
+    padding: 28px;
+  }
+
+  .photo-post {
+    grid-template-columns: 136px 1fr;
+  }
+
+  .photo-post[data-lead] {
+    grid-row: 1 / -1;
+    padding-bottom: 0;
+  }
+
+  .photo-post[data-lead] .post-caption {
+    font-size: 19px;
+  }
+}
+
 .post-label {
+  display: inline-block;
   padding: 2px 10px;
   border-radius: 999px;
   background: #f1e3db;
   color: var(--color-cocoa);
-  font: 500 11px/1.6 var(--font-mono);
+  font: 500 12px/1.6 var(--font-mono);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -1479,8 +1641,8 @@ a.index-card:hover {
 
 .post-caption {
   margin-top: 8px;
-  color: rgb(43 32 28 / 0.82);
-  font-size: 15px;
+  color: rgb(43 32 28 / 0.84);
+  font-size: 16px;
   line-height: 1.5;
 }
 
@@ -2522,6 +2684,67 @@ select.setup-input {
     left: 0;
     width: 60%;
     animation: none;
+  }
+}
+
+/* The application's own page (/apply): the window centered on the desk, growing with the form. */
+.apply-page {
+  min-height: 100svh;
+}
+
+.apply-stage {
+  display: grid;
+  place-items: center;
+  min-height: 100svh;
+  padding: 76px 12px 84px;
+}
+
+.apply-stage > .win {
+  width: min(980px, 100%);
+}
+
+.apply-back {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px 6px 8px;
+  border-radius: 12px;
+  background: rgb(251 249 246 / 0.92);
+  box-shadow: 0 8px 20px -10px rgb(40 20 10 / 0.45);
+  font: 500 14px/1 var(--font-sans);
+  transition: translate 0.25s var(--spring);
+}
+
+.apply-back:hover {
+  translate: 0 -2px;
+}
+
+.apply-back:hover > span {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.apply-back img {
+  width: auto;
+  height: 30px;
+}
+
+@media (min-width: 768px) {
+  .apply-back {
+    left: 20px;
+    font-size: 15px;
+  }
+
+  .apply-back img {
+    height: 34px;
+  }
+
+  .apply-stage {
+    padding: 84px 24px 90px;
   }
 }
 

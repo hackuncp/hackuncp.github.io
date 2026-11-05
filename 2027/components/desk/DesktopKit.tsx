@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, type RefObject } from "react";
+import Link from "next/link";
 import config, { type DeskItem } from "@/hackuncp.config";
 import { useDesk } from "./DeskProvider";
 import { useCountdown } from "./useCountdown";
@@ -92,9 +93,13 @@ export function WelcomeBody() {
           <a href={links.apply} target="_blank" rel="noreferrer" className="btn-rose">
             Apply now
           </a>
+        ) : apply.action ? (
+          <Link href="/apply/" className="btn-rose">
+            Apply now
+          </Link>
         ) : (
           <button type="button" className="btn-rose" onClick={() => navigate("apply", "input[type=email]")}>
-            {apply.action ? "Apply now" : "Get notified"}
+            Get notified
           </button>
         )}
         <button type="button" className="btn-outline" onClick={() => navigate("contact")}>

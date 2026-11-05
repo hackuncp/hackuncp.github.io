@@ -72,7 +72,7 @@ export default function Team() {
     <section id="team" data-tone="light" data-nav="about" className="brick-section">
       <div className="mx-auto max-w-[1100px] px-4 pb-32 pt-4 sm:px-8">
         <h2 className="display-lg text-center text-cream">{team.heading}</h2>
-        <p className="mx-auto mt-5 max-w-[44ch] text-center text-lg leading-relaxed text-cream/85">{team.body}</p>
+        <p className="mx-auto mt-5 max-w-[60ch] text-balance text-center text-lg leading-relaxed text-cream/85">{team.body}</p>
 
         <div className="mt-12">
           <Window title={team.windowTitle} bodyClassName="p-0">

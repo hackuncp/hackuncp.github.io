@@ -74,7 +74,7 @@ const sections: Sections = {
 };
 
 // Windows without their own pill light up a neighbor's, like on the scrolling site.
-const pillFor: Partial<Record<SectionId, string>> = { team: "about", schedule: "faq", guide: "faq", posts: "contact", subscribe: "apply" };
+const pillFor: Partial<Record<SectionId, string>> = { team: "about", guide: "faq", posts: "contact", subscribe: "apply" };
 
 export default function DesktopOS() {
   return (

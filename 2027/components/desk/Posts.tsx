@@ -7,43 +7,49 @@ import { asset } from "./asset";
 
 const { posts, links } = config;
 
-/** The camera-roll view: account toolbar and the post grid. */
+/** The camera-roll view: account header, one large post, then the rest in a list. */
 export function PostsBody() {
   const { open } = useDesk();
   const set = posts.items.map((p) => p.photo);
 
   return (
-    <>
-      <div className="photos-toolbar">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={asset("/brand/hackuncp-logo.png")} alt="" width={908} height={682} className="h-7 w-auto" />
-        <span className="font-medium">hackuncp</span>
+    <div className="photos-app">
+      <div className="photos-profile">
+        <span className="photos-avatar">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={asset("/brand/hackuncp-logo.png")} alt="" width={908} height={682} />
+        </span>
+        <p className="min-w-0">
+          <span className="photos-handle">hackuncp</span>
+          <span className="photos-tagline">{posts.tagline}</span>
+        </p>
         {links.instagram ? (
           <a href={links.instagram} target="_blank" rel="noreferrer" className="btn-outline btn-outline-dark btn-sm ml-auto">
             follow on Instagram
           </a>
         ) : (
-          <span className="ml-auto text-sm text-ink/55">Instagram link coming soon</span>
+          <span className="photos-soon">Instagram link coming soon</span>
         )}
       </div>
-      <ul className="photos-grid">
-        {posts.items.map((p) => (
-          <li key={p.label} className="photo-post">
+      <ul className="photos-feed">
+        {posts.items.map((p, i) => (
+          <li key={p.label} className="photo-post" data-lead={i === 0 ? "" : undefined}>
             <button
               type="button"
-              className="block w-full overflow-hidden rounded-lg"
               onClick={(e) => open({ kind: "photo", photo: p.photo, set }, e.currentTarget)}
               aria-label={`Open photo: ${config.photos[p.photo].caption}`}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={photoSrc(p.photo, "thumb")} alt="" loading="lazy" className="aspect-square w-full object-cover" />
+              <img src={photoSrc(p.photo, i === 0 ? "full" : "thumb")} alt="" loading="lazy" />
             </button>
-            <span className="post-label mt-3 inline-block">{p.label}</span>
-            <p className="post-caption">{p.caption}</p>
+            <div className="min-w-0">
+              <span className="post-label">{p.label}</span>
+              <p className="post-caption">{p.caption}</p>
+            </div>
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }
 

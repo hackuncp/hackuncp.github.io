@@ -136,6 +136,7 @@ export const config = {
     { id: "home", label: "home" },
     { id: "about", label: "about" },
     { id: "sponsors", label: "sponsors" },
+    { id: "schedule", label: "schedule" },
     { id: "faq", label: "faq" },
     { id: "contact", label: "contact" },
     { id: "apply", label: "apply" },
@@ -145,7 +146,7 @@ export const config = {
     windowTitle: `hackuncp_${year}.app`,
     eyebrow: `UNC Pembroke · March 20–21, ${year}`,
     headline: "twenty-four hours to build something real.",
-    body: `The third ${name} is coming back to Pembroke. It's free for college students in every major and at every skill level, and it's run by students at AI@UNCP.`,
+    body: `The third annual ${name} returns to UNC Pembroke. The event is free for college students in every major and at every skill level, and is organized by students at AI@UNCP.`,
     hint: "psst — everything on this desktop is draggable",
     scrollCue: "scroll down for more",
   },
@@ -280,7 +281,7 @@ export const config = {
 
   about: {
     heading: "what is HackUNCP?",
-    body: `${name} is UNC Pembroke's annual 24-hour hackathon, run by students at AI@UNCP. For one weekend, students from every major team up to learn something new, build a project from scratch, and show it off at demo time.`,
+    body: `${name} is UNC Pembroke's annual 24-hour hackathon, organized by students at AI@UNCP. Over one weekend, students from every major collaborate to learn new skills, build original projects, and present their work to judges.`,
     upcoming: {
       edition: `${name} ${year}`,
       dates: "March 20–21, 2027",
@@ -289,9 +290,9 @@ export const config = {
   },
 
   schedule: {
-    heading: "the schedule",
+    heading: "schedule",
     windowTitle: "schedule.ics",
-    note: "Exact times for everything in between are coming soon. Grey times show when things happened at HackUNCP 2026.",
+    note: "The full program will be published as times are confirmed. Times marked 2026 show last year's schedule for reference.",
     // TBD: fill in 2027 times as the program is finalized. `lastYear` comes from the HackUNCP 2026 Devpost schedule.
     days: [
       {
@@ -315,7 +316,7 @@ export const config = {
         ],
       },
     ] as { day: string; date: string; items: { time: string; title: string; lastYear?: string }[] }[],
-    /** The "add to calendar" file: the whole event, in UTC (5 PM Eastern = 21:00 UTC in March). */
+    /** The whole event for "add to calendar", in UTC (5 PM Eastern = 21:00 UTC in March). `file` names the Apple and Outlook download. */
     calendar: { file: "hackuncp-2027.ics", start: "20270320T210000Z", end: "20270321T210000Z", location: "UNC Pembroke, Pembroke, NC" },
   },
 
@@ -407,48 +408,67 @@ export const config = {
   },
 
   faq: {
-    heading: "questions, answered",
+    heading: "frequently asked questions",
     windowTitle: "faq.txt",
     items: [
+      // TBD: name the building once it's confirmed.
       {
-        q: "Is HackUNCP 2027 in person?",
-        a: "Yes. It's at UNC Pembroke in Pembroke, NC, on March 20–21, 2027. The exact building is TBD and will be posted here.",
+        q: "Is HackUNCP 2027 an in-person event?",
+        a: "Yes. HackUNCP 2027 will take place in person at UNC Pembroke in Pembroke, NC, on March 20–21, 2027. The building will be announced here once it is confirmed.",
       },
       {
-        q: "How long is it?",
-        a: "24 hours, from check-in on Saturday, March 20 at 5 PM to the closing ceremony on Sunday, March 21 at 5 PM.",
+        q: "How long does the event last?",
+        a: "The event lasts 24 hours, from check-in on Saturday, March 20 at 5:00 PM to the closing ceremony on Sunday, March 21 at 5:00 PM.",
       },
       {
-        q: "Who can attend?",
-        a: "Any college or university student, in any major and at any skill level. HackUNCP isn't open to high school students.",
+        q: "Who is eligible to attend?",
+        a: "HackUNCP is open to students enrolled at any college or university, in any major and at any skill level.",
       },
-      { q: "How much does it cost?", a: "Nothing. HackUNCP is free for every hacker." },
+      { q: "Is there a cost to attend?", a: "No. HackUNCP is free for all participants." },
       {
         q: "When do applications open?",
-        a: "Soon. Join the mailing list at the bottom of this page and we'll email you the moment they do.",
+        a: "The opening date will be announced soon. Join the mailing list at the bottom of this page to be notified when applications open.",
       },
       {
-        q: "I've never been to a hackathon. Can I come?",
-        a: "Please do. Every skill level is welcome, and there are workshops and mentors all weekend to help you get unstuck.",
+        q: "Can first-time hackers attend?",
+        a: "Yes. Participants of every skill level are welcome, and workshops and mentors will be available throughout the weekend of March 20–21, 2027.",
       },
       {
-        q: "I don't study computer science. What about me?",
-        a: "You belong here too. Designers, business students, scientists, and artists all make teams better.",
+        q: "Is a computer science background required?",
+        a: "No. HackUNCP welcomes students from every field of study. Experience in design, business, the sciences, and the arts strengthens any team.",
       },
-      { q: "I'm not a UNCP student. Can I still attend?", a: "Yes. Students from any college or university can apply." },
-      { q: "Do I need a team?", a: "No. You can find teammates at the event or go solo. Each person on a team registers on their own." },
-      // TBD: confirm team size and food for 2027 (these answers describe 2026).
-      { q: "How big can teams be?", a: "At HackUNCP 2026, teams had 1 to 4 people. We'll confirm the 2027 team size soon." },
-      { q: "Is food provided?", a: "At HackUNCP 2026, every meal and snack was free, along with event swag. 2027 meal times will be in the schedule." },
-      { q: "It's overnight. Where do I sleep?", a: "TBD. Our overnight plan is still being finalized, and we'll post it here before the event." },
-      { q: "What should I bring?", a: "Your laptop and charger, your phone and charger, a student ID, and a refillable water bottle. Bring any hardware you want to hack on." },
-      { q: "Does everyone who applies get in?", a: "If we get more applications than we have room for, we'll accept hackers on a rolling basis, so apply early." },
+      { q: "Is HackUNCP limited to UNC Pembroke students?", a: "No. Students from any college or university are welcome to apply." },
+      {
+        q: "Do I need a team to participate?",
+        a: "No. You are welcome to participate on your own as a team of one. You may also bring a team with you or form one with other participants at the event. Whether you work alone or with a team, every participant must register individually on Devpost.",
+      },
+      { q: "What is the maximum team size?", a: "Teams can have one to four members." },
+      // TBD: confirm food for 2027 (this answer describes 2026).
+      // TBD: link the 2027 Devpost page once it's live.
+      {
+        q: "What is Devpost, and do I need an account?",
+        a: "Devpost is the platform HackUNCP uses for participant registration and project submissions. Every participant needs a free Devpost account and must register on the HackUNCP 2027 Devpost page, including each member of a team. Teams submit one project together on Devpost, with every member added to it. The link to the 2027 page will be posted here once registration opens.",
+      },
+      {
+        q: "Is food provided?",
+        a: "At HackUNCP 2026, all meals and snacks were provided at no cost, along with event merchandise. Meal times for 2027 will be posted in the schedule.",
+      },
+      // TBD: the overnight plan.
+      { q: "What are the overnight arrangements?", a: "The overnight plan is still being finalized. Details will be posted here before the event." },
+      {
+        q: "What should I bring?",
+        a: "Please bring your laptop, phone, chargers, student ID, and a refillable water bottle, along with any hardware you plan to use.",
+      },
+      {
+        q: "Will every applicant be accepted?",
+        a: "If applications exceed capacity, participants will be accepted on a rolling basis. We encourage you to apply early.",
+      },
     ],
   },
 
   team: {
-    heading: "the people behind it",
-    body: "HackUNCP is planned by a small crew of students at AI@UNCP.",
+    heading: "the organizing team",
+    body: "HackUNCP is planned and run by a team of student leaders at AI@UNCP.",
     windowTitle: "team",
     // TBD: real names, roles and photos. `photo` is a path under /public, or null for the pixel avatar.
     // `group` fills the sidebar in the team window.
@@ -481,7 +501,8 @@ export const config = {
   posts: {
     heading: "follow along",
     kicker: "fresh off the camera roll",
-    /** Captions double as ready-to-post copy for Instagram. */
+    tagline: "UNC Pembroke's 24-hour hackathon",
+    /** The first post shows largest. Captions double as ready-to-post copy for Instagram. */
     items: [
       {
         photo: "closing-ceremony",
@@ -494,7 +515,7 @@ export const config = {
         caption: "AURA took 1st place overall at HackUNCP 2026. Somebody's taking that spot in March. Could be you.",
       },
       {
-        photo: "copilot-workshop",
+        photo: "audience",
         label: "first-timers",
         caption: "Never been to a hackathon? Good. Workshops and mentors run all weekend, and every major is welcome.",
       },
@@ -508,7 +529,7 @@ export const config = {
 
   connect: {
     heading: "let's connect",
-    body: "Want to sponsor, mentor, judge, or just ask a question? HackUNCP is run by students at AI@UNCP, and we read every message. Reach out!",
+    body: "We welcome inquiries from sponsors, mentors, judges, and participants. HackUNCP is organized by students at AI@UNCP, and we review every message we receive.",
     tab: "see you in '27",
     photos: ["huddle", "closing-ceremony", "headphones", "late-night-trio", "sticker-laptop", "first-place-aura"] satisfies PhotoId[],
     receipt: {
@@ -526,11 +547,12 @@ export const config = {
   },
 
   /*
-    The application, styled as an installer ("HackUNCP 2027 Setup"). It has three states:
+    The application, styled as an installer ("HackUNCP 2027 Setup"). The form has its own page, /apply,
+    and the apply window on the scrolling site links to it. It has three states:
       links.apply set      → applications live on an outside platform; the window links there.
-      apply.action set     → the built-in form below is open and sends answers to that URL.
+      apply.action set     → the built-in form below opens on /apply and sends answers to that URL.
       neither (right now)  → "applications open soon" plus the mailing list.
-    Add ?apply=preview to the address to try the built-in form before it's connected.
+    Open /apply/?apply=preview to try the built-in form before it's connected.
   */
   apply: {
     windowTitle: "apply.exe",
@@ -544,7 +566,8 @@ export const config = {
       heading: "Applications open soon",
       body: "apply.exe is almost ready. Leave your email and we'll tell you the moment applications open.",
     },
-    external: {
+    /** Shown in the apply window once applications open, with a button to the application. */
+    open: {
       heading: "Applications are open",
       body: `Applications for ${name} ${year} are open. Every person on a team applies on their own.`,
       button: "Start your application",
@@ -649,7 +672,11 @@ export const config = {
     label: "Enter your email",
     button: "Join mailing list",
     fineprint: "We only email about HackUNCP. Unsubscribe anytime.",
-    /** TBD: a form endpoint (Mailchimp, Buttondown, Google Forms, Formspree…). While null, the form explains sign-ups open soon. */
+    /**
+     * TBD: the web app URL (ending in /exec) of the waitlist script in apps-script/waitlist.gs,
+     * which saves each sign-up to a Google Sheet. See "Connect the waitlist" in the README.
+     * While null, the form explains sign-ups open soon.
+     */
     action: null as string | null,
     notLive: "Our mailing list isn't live yet. Check back soon!",
     desktop: [

@@ -1,6 +1,7 @@
 "use client";
 
 import { Fragment, useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
+import Link from "next/link";
 import config, { type ApplyField } from "@/hackuncp.config";
 import { Newsletter } from "./Subscribe";
 import { asset } from "./asset";
@@ -220,18 +221,36 @@ function Wizard({ preview }: { preview: boolean }) {
   );
 }
 
+/** True when ?apply=preview is in the address, to try the built-in form before it's connected. */
+function usePreview() {
+  const [preview, setPreview] = useState(false);
+
+  useEffect(() => {
+    setPreview(new URLSearchParams(window.location.search).get("apply") === "preview");
+  }, []);
+
+  return preview;
+}
+
+/** The logo and "HackUNCP 2027 Setup" above a heading, shared by the screens before the form. */
+function SetupHeading({ children }: { children: ReactNode }) {
+  return (
+    <div className="flex items-center gap-4">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={asset("/brand/hackuncp-logo.png")} alt="" width={908} height={682} className="h-auto w-20 sm:w-24" />
+      <div>
+        <p className="eyebrow">{apply.product}</p>
+        <h2 className="newsletter-heading">{children}</h2>
+      </div>
+    </div>
+  );
+}
+
 /** Before applications open: an "installing…" screen with the mailing list. */
 function ComingSoon() {
   return (
     <div className="px-6 pb-6 pt-7 sm:px-12 sm:pb-8 sm:pt-10">
-      <div className="flex items-center gap-4">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={asset("/brand/hackuncp-logo.png")} alt="" width={908} height={682} className="h-auto w-20 sm:w-24" />
-        <div>
-          <p className="eyebrow">{apply.product}</p>
-          <h2 className="newsletter-heading">{apply.soon.heading}</h2>
-        </div>
-      </div>
+      <SetupHeading>{apply.soon.heading}</SetupHeading>
       <div className="setup-installing" aria-hidden="true">
         <span />
       </div>
@@ -243,26 +262,40 @@ function ComingSoon() {
   );
 }
 
-/** The apply window or section: an outside application, the built-in form, or "coming soon". */
-export function ApplyBody() {
-  const [preview, setPreview] = useState(false);
-
-  useEffect(() => {
-    setPreview(new URLSearchParams(window.location.search).get("apply") === "preview");
-  }, []);
-
-  if (links.apply) {
-    return (
-      <div className="grid gap-4 px-6 pb-8 pt-7 sm:px-12 sm:pt-10">
-        <p className="eyebrow">{apply.product}</p>
-        <h2 className="newsletter-heading">{apply.external.heading}</h2>
-        <p className="text-[16px] leading-relaxed text-ink/75">{apply.external.body}</p>
-        <a href={links.apply} target="_blank" rel="noreferrer" className="btn-rose justify-self-start">
-          {apply.external.button}
+/** Once applications open: a button to the application, on its own page or an outside platform. */
+function Ready({ href, external = false }: { href: string; external?: boolean }) {
+  return (
+    <div className="px-6 pb-8 pt-7 sm:px-12 sm:pb-10 sm:pt-10">
+      <SetupHeading>{apply.open.heading}</SetupHeading>
+      <p className="mt-5 text-[16px] leading-relaxed text-ink/75">{apply.open.body}</p>
+      {external ? (
+        <a href={href} target="_blank" rel="noreferrer" className="btn-rose mt-6">
+          {apply.open.button}
         </a>
-      </div>
-    );
-  }
+      ) : (
+        <Link href={href} className="btn-rose mt-6">
+          {apply.open.button}
+        </Link>
+      )}
+    </div>
+  );
+}
+
+/** The apply window on the scrolling site and the desktop version. The form itself lives on /apply. */
+export function ApplyBody() {
+  const preview = usePreview();
+
+  if (links.apply) return <Ready href={links.apply} external />;
+  if (apply.action) return <Ready href="/apply/" />;
+  if (preview) return <Ready href="/apply/?apply=preview" />;
+  return <ComingSoon />;
+}
+
+/** The /apply page: the built-in form once it's open (or in preview), otherwise the same screens as the window. */
+export function ApplyForm() {
+  const preview = usePreview();
+
+  if (links.apply) return <Ready href={links.apply} external />;
   if (apply.action || preview) return <Wizard preview={!apply.action} />;
   return <ComingSoon />;
 }

@@ -41,8 +41,10 @@ export function Newsletter({ heading = true }: { heading?: boolean }) {
     if (!subscribe.action) return setStatus("not-live");
     setStatus("sending");
     try {
-      await fetch(subscribe.action, { method: "POST", body: new FormData(e.currentTarget), mode: "no-cors" });
-      setStatus("done");
+      // The waitlist script answers {"ok":true} once the email is saved in the sheet.
+      const res = await fetch(subscribe.action, { method: "POST", body: new FormData(e.currentTarget) });
+      const reply: { ok?: boolean } = await res.json();
+      setStatus(reply.ok ? "done" : "error");
     } catch {
       setStatus("error");
     }
@@ -63,6 +65,12 @@ export function Newsletter({ heading = true }: { heading?: boolean }) {
         {subscribe.label}
       </label>
       <input id={inputId} name="email" type="email" required autoComplete="email" className="newsletter-input" />
+      <input type="hidden" name="form" value="waitlist" />
+      {/* Hidden from people; bots fill in every field, and the script skips anything with this one filled. */}
+      <label className="absolute -left-[10000px] size-px overflow-hidden" aria-hidden="true">
+        Leave this empty
+        <input name="website" tabIndex={-1} autoComplete="off" />
+      </label>
       <button type="submit" className="newsletter-button" disabled={status === "sending"}>
         {subscribe.button}
       </button>
